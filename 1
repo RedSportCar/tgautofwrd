@@ -1,0 +1,13 @@
+from telethon import TelegramClient, events
+
+api_id = 'ID'
+api_hash = 'HASH'
+
+client = TelegramClient('anon', api_id, api_hash)
+client.start()
+
+@client.on(events.NewMessage(-676036365))
+async def main(event):
+   await client.forward_messages(-676036365, event.message)
+
+client.run_until_disconnected()
